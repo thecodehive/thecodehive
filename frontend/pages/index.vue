@@ -1,59 +1,64 @@
 <template>
-  <section class="container">
-    <div>
-      <logo/>
-      <h1 class="title">
-        thecodehive
-      </h1>
-      <h2 class="subtitle">
-        purposeful innovation a better world
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
-        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
+  <section>
+    <div class="video-main">
+      <TheNavbar/>
+      <div class="video-container">
+        <video class="video" src="/videos/Mock-up.mp4" autoplay loop></video>
+      </div>
+      <div class="video-overlay">
+        <div class="main-text-color text-center">
+          <h1 class="display-3">The Code Hive</h1>
+          <hr>
+          <p class="lead">Porposeful innovations a better world!</p>
+          <button type="button" class="button--green">Join now!</button>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
+
 <script>
-import Logo from '~/components/Logo.vue'
+import TheNavbar from "@/components/TheNavbar";
 
 export default {
   components: {
-    Logo
+    TheNavbar
   }
-}
+};
 </script>
 
-<style>
-.container
-{
-  min-height: 100vh;
+<style scoped>
+.video-main {
+  height: 100vh;
+  width: 100%;
+}
+.video-container {
+  height: inherit;
+  width: inherit;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+.video {
+  height: inherit;
+  width: inherit;
+  object-fit: none;
+  /* object-position: top; */
+  background-color: black;
+  position: fixed;
+}
+.video-overlay {
+  height: inherit;
+  width: inherit;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  background: rgba(1, 71, 74, 0.39);
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-}
-.title
-{
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-.subtitle
-{
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-.links
-{
-  padding-top: 15px;
+  justify-content: center;
 }
 </style>
+
+
