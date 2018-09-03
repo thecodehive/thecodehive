@@ -17,8 +17,11 @@
                 <form class="pt-3" method="post" @submit.prevent="checkEmail">
                   <div class="form-group">
                     <label class="col-form-label" for="email">Email address</label>
-                    <input type="text" v-model="email" class="form-control bordered" id="email" placeholder="Your email address">
-                    <small id="emailHelpBlock" class="form-text text-muted">
+                    <input v-validate="'required|email'" type="text" v-model="email" class="form-control bordered" id="email" placeholder="Your email address" name="email">
+                    <small v-if="errors.has('email')" id="emailHelpBlock" class="form-text text-muted">
+                     {{ errors.first('email') }}
+                    </small>
+                    <small v-else class="form-text text-muted">
                       You will be verified using this email so it should be valid
                     </small>
                   </div>
@@ -49,14 +52,21 @@ export default {
 
   data: () => ({
     
-    email: "test"
+    email: null
 
   }),
 
   methods: {
     checkEmail() {
-      alert(this.email);
-      console.log(this.email);
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          // eslint-disable-next-line
+          alert('Form Submitted!');
+          return;
+        }
+
+        alert('Correct them errors!');
+      });
     }
   }
 };
