@@ -49,6 +49,7 @@ export default {
 };
 </script>
 
+
 <style scoped>
 .video-main {
   height: 100vh;
@@ -81,5 +82,7 @@ export default {
   justify-content: center;
 }
 </style>
+
+
 
 

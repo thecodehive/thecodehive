@@ -29,7 +29,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .video-main {
   height: 100vh;
   width: 100%;

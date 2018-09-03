@@ -14,10 +14,10 @@
                 <div class="progress" style="height: 2px;">
                   <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <form class="pt-3">
+                <form class="pt-3" method="post" @submit.prevent="checkEmail">
                   <div class="form-group">
                     <label class="col-form-label" for="email">Email address</label>
-                    <input type="email" class="form-control bordered" id="email" placeholder="Your email address">
+                    <input type="text" v-model="email" class="form-control bordered" id="email" placeholder="Your email address">
                     <small id="emailHelpBlock" class="form-text text-muted">
                       You will be verified using this email so it should be valid
                     </small>
@@ -45,9 +45,23 @@ import TheNavbar from "@/components/TheNavbar";
 export default {
   components: {
     TheNavbar
+  },
+
+  data: () => ({
+    
+    email: "test"
+
+  }),
+
+  methods: {
+    checkEmail() {
+      alert(this.email);
+      console.log(this.email);
+    }
   }
 };
 </script>
+
 
 <style scoped>
 .video-main {
@@ -81,5 +95,7 @@ export default {
   justify-content: center;
 }
 </style>
+
+
 
 
