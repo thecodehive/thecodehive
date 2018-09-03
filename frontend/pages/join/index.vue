@@ -26,7 +26,7 @@
                     </small>
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-success bordered">Continue</button>
+                    <button class="btn btn-success bordered" :disabled="errors.has('email') || email == null">Continue</button>
                     <small class="form-text text-muted">
                       Already a member? <nuxt-link to="/login">Login</nuxt-link>
                     </small>
@@ -51,21 +51,19 @@ export default {
   },
 
   data: () => ({
-    
     email: null
-
   }),
 
   methods: {
     checkEmail() {
-      this.$validator.validateAll().then((result) => {
+      this.$validator.validateAll().then(result => {
         if (result) {
           // eslint-disable-next-line
-          alert('Form Submitted!');
+          alert("Form Submitted!");
           return;
         }
 
-        alert('Correct them errors!');
+        alert("Correct them errors!");
       });
     }
   }
