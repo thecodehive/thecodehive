@@ -69,6 +69,9 @@ html {
 .main-text-color {
   color: #2ff99d;
 }
+.main-bg {
+  color: #28d889;
+}
 
 button:focus {
   outline: none;
@@ -76,5 +79,9 @@ button:focus {
 
 a {
   text-decoration: none;
+}
+
+.bordered {
+  border-radius: 2px;
 }
 </style>

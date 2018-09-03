@@ -10,7 +10,8 @@
           <h1 class="display-3">The Code Hive</h1>
           <hr>
           <p class="lead">Porposeful innovations a better world!</p>
-          <button type="button" class="button--green">Join now!</button>
+          <button type="button" class="button--green mr-2">Join now!</button>
+          <button type="button" class="button--green">Explore talent</button>
         </div>
       </div>
     </div>
