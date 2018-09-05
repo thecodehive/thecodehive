@@ -23,7 +23,7 @@ Route::group([
 
 ], function ()
 {
-    Route::post('checkemail', 'AuthController@checkemail');
+    Route::post('checkemail/{auth}', 'AuthController@checkemail');
     Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
