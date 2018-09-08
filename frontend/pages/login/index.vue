@@ -54,7 +54,8 @@ export default {
     TheNavbar
   },
 
-  layout: "fullscreen",
+  // layout: "fullscreen",
+  middleware: "notAuthenticated",
 
   data() {
     return {
@@ -80,6 +81,7 @@ export default {
           };
           this.loading = false;
           this.$router.push("/admin");
+          window.location = "";
         })
         .catch(error => {
           this.loading = false;

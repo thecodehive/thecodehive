@@ -14,18 +14,16 @@
 
 <script>
 export default {
+  middleware: "authenticated",
+
   methods: {
     logOut() {
       this.$store.dispatch("auth/reset").then(() => {
         this.$router.push("/");
       });
-    },
-    fetch({ store, redirect }) {
-      if (!store.state.auth.user) {
-        redirect("/login");
-      }
     }
   },
+
   computed: {
     user() {
       return (this.$store.state.auth || {}).user || "";

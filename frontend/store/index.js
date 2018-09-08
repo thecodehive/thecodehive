@@ -1,6 +1,6 @@
-// import cookie from "cookie";
-var cookie = require("cookie");
+import cookie from "cookie";
 import { setAuthToken, resetAuthToken } from "~/utils/auth";
+
 export const actions = {
   nuxtServerInit({ dispatch }, { req }) {
     return new Promise((resolve, reject) => {

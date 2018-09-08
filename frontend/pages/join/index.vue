@@ -50,6 +50,8 @@ export default {
     TheNavbar
   },
 
+  middleware: "notAuthenticated",
+
   data: () => ({
     email: null
   }),
