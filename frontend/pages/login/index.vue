@@ -14,19 +14,26 @@
                 <div class="progress" style="height: 1px;">
                   <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <form class="pt-3">
+                <form class="pt-3" @submit.prevent="submit">
                   <div class="form-group">
                     <label class="col-form-label" for="email">Email address</label>
-                    <input type="email" class="form-control bordered" id="email" placeholder="Your email address">
-                    <!-- <small id="emailHelpBlock" class="form-text text-muted">
-                      Enter the email address you used to join.
-                    </small> -->
+                    <input type="email" v-model="email" class="form-control bordered" id="email" placeholder="Your email address">
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-success bordered">Continue login</button>
+                    <label class="col-form-label" for="password">Password</label>
+                    <input type="text" v-model="password" class="form-control bordered" id="password" placeholder="Your password">
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-success bordered" type="submit">Continue Login</button>
                   </div>
                   <small class="form-text text-muted">
                     Not a member? <nuxt-link to="/join">Join</nuxt-link>
+                  </small>
+                  <small v-show="loading" class="form-text text-muted">
+                    loading...
+                  </small>
+                  <small class="form-text text-muted">
+                    {{alert.message}}-type--{{alert.type}}
                   </small>
                 </form>
               </div>
@@ -45,6 +52,46 @@ import TheNavbar from "@/components/TheNavbar";
 export default {
   components: {
     TheNavbar
+  },
+
+  layout: "fullscreen",
+
+  data() {
+    return {
+      email: "",
+      password: "",
+      alert: "",
+      loading: false
+    };
+  },
+  methods: {
+    submit() {
+      this.alert = "";
+      this.loading = true;
+      this.$store
+        .dispatch("auth/login", {
+          email: this.email,
+          password: this.password
+        })
+        .then(result => {
+          this.alert = {
+            type: "success",
+            message: result.data.message
+          };
+          this.loading = false;
+          this.$router.push("/admin");
+        })
+        .catch(error => {
+          this.loading = false;
+          console.log(error);
+          if (error.response && error.response.data) {
+            this.alert = {
+              type: "error",
+              message: error.response.data.message || error.reponse.status
+            };
+          }
+        });
+    }
   }
 };
 </script>
