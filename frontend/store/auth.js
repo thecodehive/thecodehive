@@ -29,10 +29,10 @@ export const actions = {
         return error;
       });
   },
-
-  login({ commit }, data) {
+  login({ dispatch }, data) {
     return api.auth.login(data).then(response => {
-      commit("set_user", response.data.user);
+      // commit("set_user", response.data.user);
+      dispatch("fetch");
       setAuthToken(`Bearer ${response.data.access_token}`);
       cookies.set("Authorization", `Bearer ${response.data.access_token}`, {
         expires: 7
@@ -40,7 +40,6 @@ export const actions = {
       return response;
     });
   },
-
   reset({ commit }) {
     commit("reset_user");
     resetAuthToken();

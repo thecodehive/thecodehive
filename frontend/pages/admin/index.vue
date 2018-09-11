@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  middleware: "authenticated",
+  // middleware: "authenticated",
 
   methods: {
     logOut() {

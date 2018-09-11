@@ -84,4 +84,13 @@ a {
 .bordered {
   border-radius: 2px;
 }
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #2ff99d;
+    outline: 0;
+    -webkit-box-shadow: inset 0 0 5px 1px rgba(0, 255, 19, 0.41);
+    box-shadow: inset 0 0 5px 1px rgba(0, 255, 19, 0.41);
+}
 </style>

@@ -8,7 +8,7 @@
 
         <b-collapse is-nav id="nav_collapse">
           <b-navbar-nav left>
-              <b-nav-item to="/login">Login  /</b-nav-item>
+              <b-nav-item to="/login">Login</b-nav-item>
               <b-nav-item to="/join">Join</b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav class="ml-md-auto">

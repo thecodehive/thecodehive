@@ -9,7 +9,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-4 offset-md-4 col-sm-8 offset-md-2">
-              <div class="auth-container bg-white p-4 pb-2 bordered">
+              <div class="auth-container bg-white p-4 pb-2 bordered animated fadeIn">
                 <h4 class="main-text-color text-center pb-1">The Code Hive</h4>
                 <div class="progress" style="height: 2px;">
                   <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -18,7 +18,7 @@
                   <div class="form-group">
                     <label class="col-form-label" for="email">Email address</label>
                     <input v-validate="'required|email'" type="text" v-model="email" class="form-control bordered" id="email" placeholder="Your email address" name="email">
-                    <small v-if="errors.has('email')" id="emailHelpBlock" class="form-text text-muted">
+                    <small v-if="errors.has('email')" id="emailHelpBlock" class="form-text text-danger">
                      {{ errors.first('email') }}
                     </small>
                     <small v-else class="form-text text-muted">
@@ -44,6 +44,7 @@
 
 <script>
 import TheNavbar from "@/components/TheNavbar";
+import axios from "axios";
 
 export default {
   components: {
@@ -58,14 +59,23 @@ export default {
 
   methods: {
     checkEmail() {
+      //check if passed validation
+
       this.$validator.validateAll().then(result => {
         if (result) {
-          // eslint-disable-next-line
-          alert("Form Submitted!");
-          return;
-        }
+          // checkemail
 
-        alert("Correct them errors!");
+          axios
+            .post("auth/checkemail/reg", { email: this.email })
+            .then(result => {
+              // continue to next step
+              console.log(result.data.message);
+            })
+            .catch(error => {
+              console.log(error.response.data.message);
+            });
+        }
+        //
       });
     }
   }

@@ -26,6 +26,9 @@ class AuthController extends Controller
      */
     public function checkemail(Request $request, $auth)
     {
+        $request->validate([
+            'email' => 'required|email|max:50',
+        ]);
 
         //checking for the email in the database
         $user = User::where('email',  $request->email)->first();
@@ -37,7 +40,7 @@ class AuthController extends Controller
             {   
                 // email already exists -- on signup
                 return response()->json([
-                    'data' => $user->email,
+                    'email' => $user->email,
                     'message' => 'email already exists'],
                     401
                 );
@@ -45,7 +48,10 @@ class AuthController extends Controller
             else
             {   
                 //success
-                return response()->json(['data' => $request->email]);
+                return response()->json([
+                    'email' => $request->email,
+                    'message' => 'success']
+                );
             }
         }
         elseif($auth === 'log') //if the request is to login an existing user
@@ -53,13 +59,13 @@ class AuthController extends Controller
             if ($user)
             {   
                 //success 
-                return response()->json(['data' => $user->email]);
+                return response()->json(['email' => $user->email]);
             }
             else
             {   
                 // email does not exist -- on login
                 return response()->json([
-                    'data' => $request->email,
+                    'email' => $request->email,
                     'message' => 'unkown email address'],
                     401
                 );
