@@ -16,7 +16,9 @@ npm install'''
     }
     stage('Deliver') {
       steps {
-        sh '''npm run build
+        sh '''ls
+cat package.json
+npm run build
 npm start'''
       }
     }
