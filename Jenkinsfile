@@ -14,5 +14,11 @@ ls
 npm install'''
       }
     }
+    stage('Deliver') {
+      steps {
+        sh '''npm run build
+npm start'''
+      }
+    }
   }
 }
