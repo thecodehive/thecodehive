@@ -17,6 +17,8 @@ npm install'''
     stage('Deliver') {
       steps {
         sh '''ls
+cd frontend
+ls
 cat package.json
 npm run build
 npm start'''
