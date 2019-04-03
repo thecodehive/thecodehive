@@ -4,7 +4,7 @@ pipeline {
       image 'node:8-alpine'
       args '''  --name code
   --env "VIRTUAL_HOST=code.mastertest.cf" 
-  --env "VIRTUAL_PORT=3006" 
+  --env "VIRTUAL_PORT=3000" 
   --env "LETSENCRYPT_HOST=code.mastertest.cf" 
   --env "LETSENCRYPT_EMAIL=juliusmubajje1@gmail.com" '''
     }
